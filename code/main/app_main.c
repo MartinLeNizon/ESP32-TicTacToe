@@ -395,7 +395,10 @@ void app_main(void)
 
     cmd_init( master_public );
 
-    game_init(); // master_init( );    // master node init / autotest    
+    game_init(); // master_init( );    // master node init / autotest  
+
+    lownet_set_key(&lownet_keystore_read(0));
+    serial_write_line("Set lownet stored key 0.");  
 
     /*
      * Serial UI
