@@ -47,7 +47,14 @@ uint32_t tictac_checksum( const tictactoe_t *b )
     /* Init the memory chunk */
     memset( b4, 0, TICTACTOE_N2 );  // clear all?
 
-    /* TODO: encode the given board b into b4 */
+    /* Encode the given board b into b4 */
+    uint8_t checksum;
+
+    for (int i = 0; i < TICTACTOE_N2; i++) {
+        checksum = b->board[4*i] + 4*(b->board[4*i + 1]) +  16*b->board[4*i + 2] + 64*b->board[4*i + 3];
+
+        memcpy(b4 + i, &checksum, sizeof(uint8_t));
+    }
 
     /* Then compute the CRC code */
     return crc24(b4, TICTACTOE_N2 );
