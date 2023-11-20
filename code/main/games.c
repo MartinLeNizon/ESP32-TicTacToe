@@ -255,8 +255,8 @@ void game_receive( const lownet_frame_t *frame )
                 case GAME_PACKET_TIE:
                     status = GAME_OVER;
                     // FIX/CHECK: without delay game_register sometimes fails?!
-                    vTaskDelay( 100 / portTICK_PERIOD_MS); 
-                    game_register( 0xf0 );  // stress test, remove later FIX FIX
+                    // vTaskDelay( 100 / portTICK_PERIOD_MS);
+                    // game_register( 0xf0 );  // stress test, remove later FIX FIX
                     break;
             }
             break;
